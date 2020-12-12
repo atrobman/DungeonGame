@@ -1,5 +1,6 @@
 import OpenGL.GL as gl
 import random
+from .globals import * #pylint: disable=unused-wildcard-import
 
 class Tile:
 
@@ -9,5 +10,11 @@ class Tile:
 		self.color = (random.random(), random.random(), random.random())
 
 	def draw(self):
+
 		gl.glColor3d(self.color[0], self.color[1], self.color[2])
-		gl.glRectd(self.loc[0] * 10, self.loc[1] * 10, self.loc[0] * 10 + 10, self.loc[1] * 10 + 10)
+		gl.glRectd(
+			self.loc[0] * Globals.TILE_SIZE, 
+			self.loc[1] * Globals.TILE_SIZE, 
+			self.loc[0] * Globals.TILE_SIZE + Globals.TILE_SIZE, 
+			self.loc[1] * Globals.TILE_SIZE + Globals.TILE_SIZE
+			)
